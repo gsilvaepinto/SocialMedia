@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home / X</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <button class="postBtn">Post</button>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home / X</title>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <button class="postBtn">Post</button>
+    
+    <% for (let post of posts) { %>
+    <div class="postContainer">
+        <div class="post">
+            <div class="postHeader">
+                <div class="profilePic">
+                    <span><%= post.username.charAt(0).toUpperCase() %></span>
+                </div>
+                <div class="username">@<%= post.username %></div>
+            </div>
+            <div class="comment"><%= post.comment %></div>
+        </div>
+    </div>
+    <% } %>
+    
+</body>
+</html>
+</div>
+</body>
+</html>

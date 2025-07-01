@@ -1,6 +1,8 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const Post = require('./models/postModel');
+const methodOverride = require('method-override');
 
 (async () => {
     try{
@@ -8,10 +10,22 @@ const mongoose = require('mongoose');
         console.log('MONGO CONNECTION SUCCESS');
 
         const app = express();
+        const path = require('path');
+
+        app.use(express.urlencoded({extended: true}));
+        app.use(methodOverride('_method'));
+        app.use(express.static(path.join(__dirname, 'public')));
+
+        app.set('view engine', 'ejs');
+        app.set('views', path.join(__dirname, '/views'));
+
+        app.get('/', async (req, res) => {
+            const posts = await Post.find({});
+            res.render('index', {posts});
+        })
 
         const PORT = process.env.PORT;
         app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
-        
     }
     catch (err){
         console.log('MONGO CONNECTION ERROR:', err);
